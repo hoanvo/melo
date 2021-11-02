@@ -1,0 +1,95 @@
+#kpiano {
+	margin: 0 auto;
+    width: 990px;   
+    height: 500px;
+	position: relative;
+	/* border: dashed thin; */
+	/*background-color: rgba(0, 0, 0,0.5);*/
+	background-color: #262526;
+	/*box-shadow: 2px 5px 5px #009688;*/
+	bottom: 0px;
+}
+
+#colors {
+	height: 7px;
+	position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+#colors .color { 	
+	height: 100%;	
+	position: absolute;
+}
+
+#frames, #notes {
+	/*border: dashed green thin; */
+	height: 100%;
+	position: absolute;
+    top: 0px;
+    width: 100%;
+	overflow: hidden;
+}
+
+#frames .frame {
+	width: 18px;
+	/* top: 7px;	 */
+    border-right: 1px solid rgba(255,255,255,.5);
+	height: 100%;
+	position: absolute;
+	z-index: 0;	
+}
+
+#notes .note {
+	/*width: 15px; */
+    /*height: 15px;  */
+	border: 1px solid rgba(255,255,255,.5);
+    border-radius: 3px;
+	position: absolute;		
+	z-index: 0;
+	/* margin: 0px 0.5px; */
+}
+
+#keys {	
+    top: 420px;	/* height0 = 500 height1 = 90 => top = 500 - 90 + 22*/
+	position: absolute;		
+	/* border: dashed thin #c0c; */
+	height: 90px;
+	/*margin-left: 2px;	*/
+}
+
+
+#keys div {	
+    font: 8px arial;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 3px;
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+	position: absolute;
+	cursor: pointer;
+}
+
+#keys .white {	
+	width: 16px;
+    height: 71px;
+    /*padding-top: 49px;*/
+    margin-top: 7px;    
+    color: gray;
+	line-height: 16;
+    text-shadow: none;
+	z-index: 1;	
+	box-shadow: 1px 1px 1px #888888;
+}
+
+#keys .black {
+	width: 10px;
+    height: 44px;
+    /*padding-top: 22px; */
+    margin-top: 7px;    
+    color: rgba(0, 0, 0, 0);
+    text-shadow: none;
+	z-index: 2;	
+	box-shadow: 1px 1px 1px #888888;
+}

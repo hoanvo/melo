@@ -1,0 +1,128 @@
+<!doctype html>
+<!--[if IE 7]><html lang="en" class="ie7"></html><![endif]-->
+<!--[if IE 8]><html lang="en" class="ie8"></html><![endif]-->
+<!--[if IE 9]><html lang="en" class="ie9"></html><![endif]-->
+<!-- [if gt IE 9] <!-->
+<html lang="en">
+  <!-- <![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>Piano Demo</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width" />
+	
+	<link type="text/css" rel="stylesheet" href="script/css/piano.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	
+	<script type="text/javascript" src="script/js/jquery-3.2.1.min.js"></script>
+    <script src="script/js/jquery-ui.js"></script>  
+    <script type="text/javascript" src="script/js/soundfont.min.js"></script>
+    <script type="text/javascript" src="script/js/MIDIHatana.js"></script>
+	<script type="text/javascript" src="script/js/piano.js"></script>		
+	
+</head>
+<body>
+	<div style="height: 85px; width: 990px; margin: 0px auto;">
+        <select id="sltSF">
+            <option value="acoustic_grand_piano-mp3-hoan">Acoustic Grand Piano (pedal)</option>
+            <option value="acoustic_grand_piano-mp3">Acoustic Grand Piano</option>            
+            <option value="acoustic_guitar_nylon-mp3">Acoustic Guitar Nylon</option>
+            <option value="acoustic_guitar_steel-mp3">Acoustic Guitar Steel</option>
+            <option value="alto_sax-mp3">Alto Sax</option>
+            <option value="baritone_sax-mp3">Baritone Sax</option>
+            <option value="brass_section-mp3">Brass Section</option>
+            <option value="distortion_guitar-mp3">Distortion Guitar</option>
+            <option value="electric_bass_finger-mp3">Electric Bass Finger</option>
+            <option value="electric_bass_pick-mp3">Electric Bass Pick</option>
+            <option value="electric_guitar_jazz-mp3">Electric Guitar Jazz</option>
+            <option value="flute-mp3">Flute</option>
+            <option value="soprano_sax-mp3">Soprano Sax</option>
+            <option value="synth_drum-mp3">Synth Drum</option>
+            <option value="tenor_sax-mp3">Tenor Sax</option>
+            <option value="trumpet-mp3">Trumpet</option>
+        </select>
+        <select id="sltMidi">
+            <option value="Pianoholics - Auld Lang Syne - Le Nhat Quang.mid">Pianoholics - Auld Lang Syne - Le Nhat Quang</option>
+            <option value="mario.mid">Mario</option>
+            <option value="999doahong.mid">999 đóa hoa hồng</option>
+            <option value="lycaybong.mid">Lý cây bông</option>
+            <option value="caydansinhvien.mid">Cây đàn sinh viên</option>
+            <option value="Ballade in A-flat major, Op. 47, No. 3.mid">Ballade in A-flat major, Op. 47, No. 3</option>
+            <option value="Cantabile in B-flat major.mid">Cantabile in B-flat major</option>
+            <option value="Etude in C major (Toccata), Op. 10, No. 7.mid">Etude in C major (Toccata), Op. 10, No. 7</option>
+            <option value="Fantaisie-Impromptu in C-sharp minor, Op. 66 (posth.).mid">Fantaisie-Impromptu in C-sharp minor, Op. 66 (posth.)</option>
+            <option value="Grande Valse Brillante in A-flat major , Op. 34, No. 1.mid">Grande Valse Brillante in A-flat major , Op. 34, No. 1</option>
+            <option value="Mazurka in A minor, Op. 68, No. 2 (posth.).mid">Mazurka in A minor, Op. 68, No. 2 (posth.)</option>
+            <option value="Nocturne in B-flat minor, Op. 9, No. 1.mid">Nocturne in B-flat minor, Op. 9, No. 1</option>
+            <option value="Prelude in A minor, Op. 28, No. 2.mid">Prelude in A minor, Op. 28, No. 2</option>
+            <option value="Scherzo in B minor, Op. 20, No. 1.mid">Scherzo in B minor, Op. 20, No. 1</option>
+            <option value="Waltz in D-flat major (Minute Waltz), Op. 64, No. 1.mid">Waltz in D-flat major (Minute Waltz), Op. 64, No. 1</option>
+            <option value="tempo.mid">tempo</option>
+            <option value="Pianoholics - If I Had A Chicken - Kevin Macleod.mid">Pianoholics - If I Had A Chicken - Kevin Macleod</option>
+            <option value="Pianoholics - Kaze no Toorimichi (Path of the Wind) - My Neighbor Totoro OST.mid">Pianoholics - Kaze no Toorimichi (Path of the Wind) - My Neighbor Totoro OST</option>
+            <option value="Pianoholics - Romantic Fur Elise.mid">Pianoholics - Romantic Fur Elise</option>
+            <option value="Pianoholics - Sakurairo Maukoro - Mika Nakashima.mid">Pianoholics - Sakurairo Maukoro - Mika Nakashima</option>
+            <option value="Pianoholics - Yuki no hana - Mika Nakashima.mid">Pianoholics - Yuki no hana - Mika Nakashima</option>
+            <option value="@browseMidi">Browse...</option>
+            <option value="@blank"></option>
+        </select>
+		<button id="btnStart" disabled>Play</button>
+		<button id="btnPause">Pause</button>
+        <button id="btnStop">Stop</button>
+        <button id="btnSetting">Setting</button>
+        <input id="slider" type="range" min="1" max="100" style="width: 780px;" />
+        <span id="time" style="margin: 5px;font-weight: bolder">00:00</span>
+        <img id="imgVol" src="image/soundon.png" width="24px" height="24px" />
+        <input id="volume" type="range" min="0" max="100" style="width: 100px;" />
+        <button id="btnTest">Test</button>
+	</div>
+    <div id="play">
+        <div class="background"></div>
+        <div class="play_button"></div>
+    </div>
+	<div id="kpiano">		
+        <canvas id="spaceNotes" style="width: 100%; height: 100%"></canvas>
+	</div>
+    <div id="dialog" title="Setting dialog">
+        <fieldset>
+            <legend>Tempo</legend>
+            <label>Tempo</label>
+            <button id="btnDcrTempo">-</button>
+             <label id="lblPctTempo" value="100">100%</label>
+            <button id="btnIcrTempo">+</button>
+        </fieldset>
+        <fieldset>
+            <legend>Trasposition</legend>
+            <label>Falling bars</label>
+            <button id="btnDcrBar">-</button>
+            <label id="lblValBar" value="0" min="0" max="0">0</label>
+            <button id="btnIcrBar">+</button>
+            <br><br>
+            <label>MIDI signals</label>
+            <button id="btnDcrSignal">-</button>            
+            <label id="lblValSignal" value="0" min="0" max="0">0</label>
+            <button id="btnIcrSignal">+</button>
+        </fieldset>
+        <fieldset>
+            <legend>Note Label</legend>
+            <label>Note label</label>
+            <input type="radio" id="rdbOff" value="0"  />
+            <label for="rdbOff">Off</label>
+            <input type="radio" id="rdbOn" value="1"  />
+            <label for="rdbOn">On</label>
+        </fieldset>
+        <fieldset>
+            <legend>Note Color</legend>
+            <label>Note Color</label>
+            <input type="radio" id="rdbName" value="1"  />
+            <label for="rdbName">Note Name</label>
+            <input type="radio" id="rdbChannel" value="2"  />
+            <label for="rdbChannel">Channel</label>
+        </fieldset>            
+    </div> 
+    <input style="visibility:hidden" type="file" name="browseMidi" id="browseMidi">   
+</body>
+</html>
